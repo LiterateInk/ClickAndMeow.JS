@@ -1,8 +1,8 @@
 {
-  "name": "clickandmeow",
+  "name": "clicetmiam-api",
   "version": "0.0.1",
-  "description": "A meow-mazing API wrapper for Clic&Miam",
-  "repository": "https://github.com/LiterateInk/ClickAndMeow",
+  "description": "A simple API wrapper for Clic&Miam",
+  "repository": "https://github.com/Skythrew/clicetmiam-api",
   "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -31,32 +31,14 @@
     "wrapper",
     "api"
   ],
-  "author": "LiterateInk <contact@literate.ink> (https://literate.ink)",
-  "homepage": "https://docs.literate.ink/clickandmeow",
+  "author": "Skythrew <mael.guerin@murena.io>",
+  "homepage": "https://github.com/Skythrew/clicetmiam-api",
   "bugs": {
-    "url": "https://github.com/LiterateInk/ClickAndMeow/issues"
+    "url": "https://github.com/Skythrew/clicetmiam-api/issues"
   },
   "license": "GPL-3.0-or-later",
   "engines": {
     "node": ">=18"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release v${version}",
-      "tagAnnotation": "Release v${version}",
-      "tagName": "js-v${version}"
-    },
-    "github": {
-      "draft": false,
-      "release": true,
-      "releaseName": "js v${version}"
-    },
-    "npm": {
-      "publish": false
-    },
-    "hooks": {
-      "before:init": "pnpm test && pnpm lint"
-    }
   },
   "devDependencies": {
     "@inquirer/prompts": "^4.3.3",
@@ -66,7 +48,6 @@
     "@typescript-eslint/parser": "^8.4.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.10.0",
-    "release-it": "^17.6.0",
     "terser": "^5.31.6",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4"
