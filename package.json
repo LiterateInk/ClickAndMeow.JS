@@ -72,6 +72,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@literate.ink/utilities": "1.0.0-10641118381.1"
+    "@literate.ink/utilities": "1.0.0-10641118381.1",
+    "node-html-parser": "^7.0.1"
   }
 }
