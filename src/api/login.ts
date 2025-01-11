@@ -34,3 +34,18 @@ export const loginCredentials = async (username: string, password: string, fetch
 
   return newSession;
 };
+
+export const loginCookie = async (cookie: string, fetcher: Fetcher = defaultFetcher): Promise<Session> => {
+  const session: Session = {id: cookie, fetcher};
+
+  const loginRequest = new Request("/mesmenus", "manual");
+  loginRequest.setSession(session);
+
+  const loginResponse = await loginRequest.send(fetcher);
+
+  if ((loginResponse.headers as Headers).get("Location") == BASE_URL + "/connexion") {
+    throw "Invalid cookie credential";
+  }
+
+  return session;
+};
