@@ -1,6 +1,6 @@
 {
   "name": "clicetmiam-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple API wrapper for Clic&Miam",
   "repository": "https://github.com/Skythrew/clicetmiam-api",
   "sideEffects": false,
