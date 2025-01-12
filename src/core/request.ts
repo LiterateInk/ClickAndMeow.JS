@@ -1,4 +1,4 @@
-import { type Request as FetcherRequest, setHeaderToRequest, type Response, type Fetcher, setCookiesArrayToRequest } from "@literate.ink/utilities";
+import { type Request as FetcherRequest, setHeaderToRequest, type Response, type Fetcher, setCookiesArrayToRequest, defaultFetcher } from "@literate.ink/utilities";
 import { BASE_URL } from "~/const/baseUrl";
 import type { Session } from "~/models";
 
@@ -22,7 +22,7 @@ export class Request {
     setCookiesArrayToRequest(this.request, [`PHPSESSID=${session.id}`]);
   }
 
-  public send (fetcher: Fetcher): Promise<Response> {
+  public send (fetcher: Fetcher = defaultFetcher): Promise<Response> {
     return fetcher(this.request);
   }
 }
