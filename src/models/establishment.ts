@@ -1,4 +1,4 @@
-export type Establishment = Readonly<{
-  name: string,
+export interface Establishment {
+  name: string
   url: string
-}>;
+}

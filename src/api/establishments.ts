@@ -1,23 +1,27 @@
 import { Request } from "~/core/request";
-import { Session, Establishment } from "~/models";
+import type { Session, Establishment } from "~/models";
 import { parse } from "node-html-parser";
-import { BASE_URL } from "~/const/baseUrl";
+import { isAuthenticated } from "~/core/check-auth";
+import { InvalidSessionError } from "~/core/errors";
 
-export const getEstablishments = async (session: Session): Promise<Establishment[]> => {
-  const menuPageRequest = new Request("/mesmenus", "follow");
-  menuPageRequest.setSession(session);
+export const getEstablishments = async (session: Session): Promise<Array<Establishment>> => {
+  const request = new Request("/mesmenus");
+  request.useSession(session);
 
-  const menuPageResponse = await menuPageRequest.send(session.fetcher);
-  const document = parse(menuPageResponse.content);
+  const response = await request.send(session.fetcher);
+  if (!isAuthenticated(response)) {
+    throw new InvalidSessionError();
+  }
 
-  const establishmentSelectOptions = document.querySelectorAll("#select_menu_etablissement>option");
+  const document = parse(response.content);
+  const options = document.querySelectorAll("#select_menu_etablissement>option");
 
-  const establishments: Establishment[] = [];
+  const establishments: Array<Establishment> = [];
 
-  for (const el of establishmentSelectOptions) {
+  for (const node of options) {
     establishments.push({
-      name: el.textContent.trim(),
-      url: "/" + el.getAttribute("value")!.split("/").slice(1, 4).join("/")
+      name: node.textContent.trim(),
+      url: "/" + node.getAttribute("value")!.split("/").slice(1, 4).join("/")
     });
   }
 

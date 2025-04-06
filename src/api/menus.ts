@@ -1,58 +1,60 @@
 import { Request } from "~/core/request";
-import { Establishment, Session, Menu } from "~/models";
+import type { Establishment, Session, Menu, Dishes } from "~/models";
 import { parse } from "node-html-parser";
+import { isAuthenticated } from "~/core/check-auth";
+import { InvalidSessionError } from "~/core/errors";
 
-export const getMenus = async (session: Session, establishment: Establishment) => {
+export const getMenus = async (session: Session, establishment: Establishment): Promise<Array<Menu>> => {
   const today = new Date();
 
-  const menuPageRequest = new Request(establishment.url + "/" + today.getFullYear() + "/" + today.getMonth() + "/" + today.getDate());
-  menuPageRequest.setSession(session);
+  const request = new Request(establishment.url + "/" + today.getFullYear() + "/" + today.getMonth() + "/" + today.getDate());
+  request.useSession(session);
 
-  const menuPageResponse = await menuPageRequest.send(session.fetcher);
+  const response = await request.send(session.fetcher);
+  if (!isAuthenticated(response)) {
+    throw new InvalidSessionError();
+  }
 
-  const document = parse(menuPageResponse.content);
+  const document = parse(response.content);
+  const options = document.querySelectorAll("#select_menu_repas>option");
 
-  const menuSelectOptions = document.querySelectorAll("#select_menu_repas>option");
+  const menus: Array<Menu> = [];
 
-  const menus: Menu[] = [];
-
-  for (const el of menuSelectOptions) {
+  for (const node of options) {
     menus.push({
-      name: el.textContent.trim(),
-      url: "/" + el.getAttribute("value")!.split("/").slice(1, 4).join("/")
+      name: node.textContent.trim(),
+      url: "/" + node.getAttribute("value")!.split("/").slice(1, 4).join("/")
     });
   }
 
   return menus;
 };
 
-export const getMenuDishes = async (session: Session, menu: Menu, date: Date) => {
-  const menuPageRequest = new Request(menu.url + "/" + date.getFullYear() + "/" + (date.getMonth() + 1).toString().padStart(2, "0") + "/" + date.getDate().toString().padStart(2, "0") );
-  menuPageRequest.setSession(session);
+export const getMenuDishes = async (session: Session, menu: Menu, date: Date): Promise<Dishes> => {
+  const request = new Request(menu.url + "/" + date.getFullYear() + "/" + (date.getMonth() + 1).toString().padStart(2, "0") + "/" + date.getDate().toString().padStart(2, "0") );
+  request.useSession(session);
 
-  const menuPageResponse = await menuPageRequest.send(session.fetcher);
+  const response = await request.send(session.fetcher);
+  if (!isAuthenticated(response)) {
+    throw new InvalidSessionError();
+  }
 
-  const document = parse(menuPageResponse.content);
+  const document = parse(response.content);
 
   const dishContainers = document.querySelectorAll(".menu_composante_container");
 
-  const entry: string[] = [];
-  const side: string[] = [];
-  const main: string[] = [];
-  const dairy: string[] = [];
-  const dessert: string[] = [];
+  const entry: Array<string> = [];
+  const side: Array<string> = [];
+  const main: Array<string> = [];
+  const dairy: Array<string> = [];
+  const dessert: Array<string> = [];
 
   for (const container of dishContainers) {
-    const titleEl = container.querySelector(".menu_composante_title");
-    const title = titleEl!.textContent.split("-")[1].trim();
+    const titleContainer = container.querySelector(".menu_composante_title")!;
+    const title = titleContainer.textContent.split("-")[1].trim();
 
-    const dishesEl = container.querySelectorAll(".menu-composante-libelle");
-
-    const dishes: string[] = [];
-
-    for (const dishEl of dishesEl) {
-      dishes.push(dishEl.textContent.trim());
-    }
+    const dishesContainer = container.querySelectorAll(".menu-composante-libelle");
+    const dishes = dishesContainer.map((node) => node.textContent.trim());
 
     switch (title) {
       case "Hors d'oeuvre":
