@@ -14,7 +14,7 @@ repository-code: "https://github.com/LiterateInk/ClickAndMeow.JS"
 url: "https://clickandmeow.docs.literate.ink/"
 repository-artifact: "https://www.npmjs.com/package/clickandmeow"
 abstract: >-
-  A meow-mazing wrapper for ClicEtMiam.
+  A meow-mazing wrapper for Clic&Miam.
 keywords:
   - clicetmiam
   - wrapper
