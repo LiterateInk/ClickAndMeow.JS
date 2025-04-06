@@ -40,7 +40,7 @@ const establishments = await ClickAndMeow.getEstablishments(session);
 console.log(establishments);
 ```
 
-You can find guides at [**&nearr;&nbsp;clickandmeow.docs.literate.ink**](https://clickandmeow.docs.literate.ink) and if it's not enough you can also take a look at the [**&nearr;&nbsp;examples** directory on the GitHub repository`](https://github.com/LiterateInk/ClickAndMeow.JS/tree/main/examples) for inspiration.
+You can find guides at [**&nearr;&nbsp;clickandmeow.docs.literate.ink**](https://clickandmeow.docs.literate.ink) and if it's not enough you can also take a look at the [**&nearr;&nbsp;examples** directory on the GitHub repository](https://github.com/LiterateInk/ClickAndMeow.JS/tree/main/examples) for inspiration.
 
 If none of those are helpful, you can always [&nearr;&nbsp;open an issue](https://github.com/LiterateInk/ClickAndMeow.JS/issues) to ask for help or join the [&nearr;&nbsp;LiterateInk Discord server](https://literate.ink/discord).
 
