@@ -1,4 +1,5 @@
-import { type Response, getHeaderFromResponse } from "@literate.ink/utilities";
+import { getHeaderFromResponse, type Response } from "@literate.ink/utilities";
+
 import { BASE_URL, LOGIN_PAGE_PATH } from "./constants";
 
 export const isAuthenticated = (response: Response): boolean => {

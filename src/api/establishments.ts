@@ -1,8 +1,10 @@
-import { Request } from "~/core/request";
-import type { Session, Establishment } from "~/models";
 import { parse } from "node-html-parser";
+
+import type { Establishment, Session } from "~/models";
+
 import { isAuthenticated } from "~/core/check-auth";
 import { InvalidSessionError } from "~/core/errors";
+import { Request } from "~/core/request";
 
 export const getEstablishments = async (session: Session): Promise<Array<Establishment>> => {
   const request = new Request("/mesmenus");

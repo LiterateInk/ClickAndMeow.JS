@@ -1,8 +1,10 @@
-import { Request } from "~/core/request";
-import type { Establishment, Session, Menu, Dishes } from "~/models";
 import { parse } from "node-html-parser";
+
+import type { Dishes, Establishment, Menu, Session } from "~/models";
+
 import { isAuthenticated } from "~/core/check-auth";
 import { InvalidSessionError } from "~/core/errors";
+import { Request } from "~/core/request";
 
 export const getMenus = async (session: Session, establishment: Establishment): Promise<Array<Menu>> => {
   const today = new Date();
@@ -57,29 +59,29 @@ export const getMenuDishes = async (session: Session, menu: Menu, date: Date): P
     const dishes = dishesContainer.map((node) => node.textContent.trim());
 
     switch (title) {
+      case "Dessert":
+        dessert.push(...dishes);
+        break;
+      case "Garniture":
+        side.push(...dishes);
+        break;
       case "Hors d'oeuvre":
         entry.push(...dishes);
         break;
       case "Plat":
         main.push(...dishes);
         break;
-      case "Garniture":
-        side.push(...dishes);
-        break;
       case "Produit Laitier":
         dairy.push(...dishes);
-        break;
-      case "Dessert":
-        dessert.push(...dishes);
         break;
     }
   }
 
   return {
-    entry,
-    side,
-    main,
     dairy,
-    dessert
+    dessert,
+    entry,
+    main,
+    side
   };
 };

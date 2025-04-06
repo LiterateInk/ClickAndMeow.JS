@@ -1,10 +1,11 @@
 import { defaultFetcher, type Fetcher, getCookiesFromResponse } from "@literate.ink/utilities";
-import { Request } from "~/core/request";
 import { parse } from "node-html-parser";
-import { Session } from "~/models";
-import { AccountNotYetActivatedError, InvalidCredentialsError, UnknownError } from "~/core/errors";
-import { LOGIN_PAGE_PATH, SESSION_COOKIE } from "~/core/constants";
+
 import { isAuthenticated } from "~/core/check-auth";
+import { LOGIN_PAGE_PATH, SESSION_COOKIE } from "~/core/constants";
+import { AccountNotYetActivatedError, InvalidCredentialsError, UnknownError } from "~/core/errors";
+import { Request } from "~/core/request";
+import { Session } from "~/models";
 
 export const login = async (username: string, password: string, fetcher: Fetcher = defaultFetcher): Promise<Session> => {
   let request = new Request(LOGIN_PAGE_PATH);

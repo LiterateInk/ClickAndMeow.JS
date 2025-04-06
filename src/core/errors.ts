@@ -19,16 +19,16 @@ export class InvalidCredentialsError extends ClikAndMeowError {
   }
 }
 
-export class UnknownError extends ClikAndMeowError {
-  constructor() {
-    super("An unknown error occurred");
-    this.name = "UnknownError";
-  }
-}
-
 export class InvalidSessionError extends ClikAndMeowError {
   constructor() {
     super("Invalid session, you have to login");
     this.name = "InvalidSessionError";
+  }
+}
+
+export class UnknownError extends ClikAndMeowError {
+  constructor() {
+    super("An unknown error occurred");
+    this.name = "UnknownError";
   }
 }
