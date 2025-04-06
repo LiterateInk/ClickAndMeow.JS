@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+    <meta name="description" content="Clic & Miam Connexion Inscription" >
+    <meta name="keywords" content="connexion inscription clicetmiam" >
+
+    <meta property="og:title" content="Connexion / Inscription" >
+    <meta property="og:type" content="website" >
+    <meta property="og:url" content="/profil" >
+
+    <title>Clic &amp; Miam - Connexion / Inscription</title>
+
+    <link rel="stylesheet" href="/compiled/css/base.css?1.21.14" >
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?1.21.14" >
+    <link
+      rel="apple-touch-icon"
+      href="/images/favicon/apple-touch-icon-57x57.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/images/favicon/apple-touch-icon-57x57.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/images/favicon/apple-touch-icon-60x60.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/images/favicon/apple-touch-icon-72x72.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/images/favicon/apple-touch-icon-76x76.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/images/favicon/apple-touch-icon-114x114.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/images/favicon/apple-touch-icon-120x120.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/images/favicon/apple-touch-icon-144x144.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/images/favicon/apple-touch-icon-152x152.png?1.21.14"
+    >
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/favicon/apple-touch-icon-180x180.png?1.21.14"
+    >
+  </head>
+  <body>
+    <div id="global_container">
+      <div id="header_container">
+        <header id="main_header">
+          <nav
+            id="header-navbar"
+            class="navbar navbar-default navbar-fixed-top"
+          >
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <a id="logoExm_not_connected" class="navbar-brand" href="/"
+                  ><img src="/images/logoEXMSansFond.png?1.21.14"
+                /></a>
+                <a
+                  href="/connexion"
+                  class="connexion-btn button-with-icon navbar-btn navbar-toggle"
+                >
+                  <span class="glyphicon glyphicon-log-in"></span
+                  >&nbsp;Connexion
+                </a>
+              </div>
+            </div>
+            <!-- /.container-fluid -->
+          </nav>
+        </header>
+        <nav id="breadcrumbs">
+          <ol class="breadcrumb">
+            <li>
+              <a href="/"> Accueil </a>
+            </li>
+
+            <li class="active">Connexion / Inscription</li>
+          </ol>
+        </nav>
+      </div>
+
+      <main class="main_container container-fluid offsetBreadcrumb">
+        <div id="flashContainer">
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">
+              &times;
+            </button>
+            Votre compte n&#039;a pas encore été activé.
+          </div>
+        </div>
+        <div class="container-with-padding row">
+          <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
+            <div id="form_login">
+              <h3>Connexion</h3>
+
+              <form
+                class="form-horizontal"
+                action="/login-mycheck"
+                method="post"
+              >
+                <input
+                  type="hidden"
+                  name="_csrf_token"
+                  value="SOME_CSRF_IMAGINARY_TOKEN"
+                >
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="username"
+                    >Email *</label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      placeholder="Email"
+                      name="_username"
+                      required
+                      autocomplete="off"
+                      maxlength="254"
+                    >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="password"
+                    >Mot de passe *</label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      placeholder="Mot de passe"
+                      name="_password"
+                      required="required"
+                      maxlength="20"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-9">
+                    <a href="/mot-de-passe-oublie">Mot de passe oublié ?</a> |
+                    <a href="#" onclick="showRegister()"
+                      >Je n&#039;ai pas de compte</a
+                    >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-9">
+                    <input
+                      type="submit"
+                      class="btn btn-primary"
+                      id="_submit"
+                      name="_submit"
+                      value="Connexion"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div id="form_register">
+              <h3>Inscription</h3>
+              <form
+                action="/inscription"
+                method="POST"
+                class="fos_user_registration_register form-horizontal"
+              >
+                <form
+                  name="fos_user_registration_form"
+                  method="post"
+                  action=""
+                  role="form"
+                >
+                  <div id="fos_user_registration_form">
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_email_first"
+                        >Email *</label
+                      >
+                      <div class="col-md-8">
+                        <input
+                          type="text"
+                          id="fos_user_registration_form_email_first"
+                          name="fos_user_registration_form[email][first]"
+                          required="required"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_email_second"
+                        >Confirmez votre email *</label
+                      >
+                      <div class="col-md-8">
+                        <input
+                          type="text"
+                          id="fos_user_registration_form_email_second"
+                          name="fos_user_registration_form[email][second]"
+                          required="required"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_plainPassword_first"
+                        >Mot de passe *</label
+                      >
+                      <div class="col-md-8">
+                        <input
+                          type="password"
+                          id="fos_user_registration_form_plainPassword_first"
+                          name="fos_user_registration_form[plainPassword][first]"
+                          required="required"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_plainPassword_second"
+                        >Confirmez votre mot de passe *</label
+                      >
+                      <div class="col-md-8">
+                        <input
+                          type="password"
+                          id="fos_user_registration_form_plainPassword_second"
+                          name="fos_user_registration_form[plainPassword][second]"
+                          required="required"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_prenom"
+                        >Prénom *</label
+                      >
+                      <div class="col-md-8">
+                        <input
+                          type="text"
+                          id="fos_user_registration_form_prenom"
+                          name="fos_user_registration_form[prenom]"
+                          required="required"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_nom"
+                        >Nom *</label
+                      >
+                      <div class="col-md-8">
+                        <input
+                          type="text"
+                          id="fos_user_registration_form_nom"
+                          name="fos_user_registration_form[nom]"
+                          required="required"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label
+                        class="control-label col-md-4 required"
+                        for="fos_user_registration_form_captcha"
+                        >Vérifions que vous n'êtes pas un robot *</label
+                      >
+                      <div class="col-md-8">
+                        <img
+                          id="captcha_67f268889b5c4"
+                          src="/_gcb/generate-captcha/gcb_captcha"
+                          alt=""
+                          title="captcha"
+                          width="130"
+                          height="50"
+                        />
+                        <script type="text/javascript">
+                          function reload_captcha_67f268889b5c4() {
+                            var img = document.getElementById(
+                              "captcha_67f268889b5c4",
+                            );
+                            img.src =
+                              "/_gcb/generate-captcha/gcb_captcha?n=" +
+                              new Date().getTime();
+                          }
+                        </script>
+                        <a
+                          class="captcha_reload"
+                          href="javascript:reload_captcha_67f268889b5c4();"
+                          >Renouveler</a
+                        ><input
+                          type="text"
+                          id="fos_user_registration_form_captcha"
+                          name="fos_user_registration_form[captcha]"
+                          required="required"
+                          autocomplete="off"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-8 col-md-offset-4">
+                        <div class="checkbox">
+                          <label
+                            for="fos_user_registration_form_cgu"
+                            class="required"
+                            ><input
+                              type="checkbox"
+                              id="fos_user_registration_form_cgu"
+                              name="fos_user_registration_form[cgu]"
+                              required="required"
+                              align_with_widget="1"
+                              value="1"
+                            />
+                            J'accepte les
+                            <a href="/cgu"
+                              >Conditions Générales d'Utilisation</a
+                            ></label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-8 col-md-offset-4">
+                        <div class="checkbox">
+                          <label for="fos_user_registration_form_newsletter"
+                            ><input
+                              type="checkbox"
+                              id="fos_user_registration_form_newsletter"
+                              name="fos_user_registration_form[newsletter]"
+                              align_with_widget="1"
+                              value="1"
+                            />
+                            Je m'abonne à la newsletter</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-offset-4 col-md-8">
+                        <button
+                          type="submit"
+                          id="fos_user_registration_form__submit"
+                          name="fos_user_registration_form[_submit]"
+                          class="btn btn-primary"
+                        >
+                          Je m&#039;inscris
+                        </button>
+                      </div>
+                    </div>
+                    <input
+                      type="hidden"
+                      id="fos_user_registration_form__token"
+                      name="fos_user_registration_form[_token]"
+                      class="form-control"
+                      value="yWWsrPnVVaLR_oBociaftAHj0MQx6KpwxjBvjpoW50w"
+                    />
+                  </div>
+                </form>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="container-fluid">
+        <div id="f_content" class="row">
+          <ul id="f_tags" class="col-lg-10 col-md-10 col-xs-12">
+            <li class="f-tags-item">© 2025 - Clic&amp;Miam</li>
+            <li class="f-tags-item">
+              <a href="http://www.convivio.fr">Convivio.fr</a>
+            </li>
+            <li class="f-tags-item">
+              <a href="/mentions-legales">Mentions légales</a>
+            </li>
+            <li class="f-tags-item"><a href="/plan-site">Plan du site</a></li>
+            <li class="f-tags-item">
+              Nous contacter :<img
+                title="email de contact convivio"
+                src="/images/contact_email_convivio.png?1.21.14"
+              />
+            </li>
+          </ul>
+          <div id="f_logo_container" class="col-lg-2 col-md-2 col-xs-12">
+            <a href="http://www.convivio.fr"
+              ><img
+                id="f_logo"
+                title="logo convivio"
+                src="/images/convivio_applat_blanc_ssbl.png?1.21.14"
+            /></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="/bundles/fosjsrouting/js/router.js?1.21.14"></script>
+    <script src="/js/routing?callback=fos.Router.setData"></script>
+    <script src="/js/jquery.js?1.21.14"></script>
+    <script src="/js/exm.js?1.21.14"></script>
+    <script src="/js/bootstrap.js?1.21.14"></script>
+
+    <script>
+      $("#fos_user_registration_form_plainPassword_first")
+        .parent()
+        .attr(
+          "data-tip",
+          "Le mot de passe doit faire entre 8 et 20 caractères et contenir au moins un chiffre et une lettre.",
+        );
+
+      $("#fos_user_registration_form_plainPassword_first").click(function () {
+        $(this).parent().addClass("showtip");
+      });
+
+      $("#fos_user_registration_form_plainPassword_first").blur(function () {
+        if ($(this).parent().hasClass("showtip")) {
+          $(this).parent().removeClass("showtip");
+        }
+      });
+
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga",
+      );
+
+      ga("create", "UA-68567128-1", "auto");
+
+      ga("set", "connected", Boolean());
+      ga("set", "page", "loginregister");
+
+      ga("send", "pageview");
+    </script>
+  </body>
+</html>
