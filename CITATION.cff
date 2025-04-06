@@ -5,13 +5,18 @@ message: >-
   metadata from this file.
 type: software
 authors:
+  - name: LiterateInk
+    website: "https://literate.ink"
+    email: contact@literate.ink
   - name: Skythrew
     email: mael.guerin@murena.io
-repository-code: 'https://github.com/Skythrew/clicetmiam-api'
+repository-code: "https://github.com/LiterateInk/ClickAndMeow.JS"
+url: "https://clickandmeow.docs.literate.ink/"
+repository-artifact: "https://www.npmjs.com/package/clickandmeow"
 abstract: >-
-  A simple API wrapper for Clic&Miam.
+  A meow-mazing wrapper for ClicEtMiam.
 keywords:
-  - ClickAndMeow
+  - clicetmiam
   - wrapper
-  - api
+  - scrapper
 license: GPL-3.0-or-later

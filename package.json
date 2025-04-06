@@ -1,9 +1,12 @@
 {
-  "name": "clicetmiam-api",
+  "name": "clickandmeow",
   "version": "1.0.2",
-  "description": "A simple API wrapper for Clic&Miam",
-  "repository": "https://github.com/Skythrew/clicetmiam-api",
-  "sideEffects": false,
+  "description": "A meow-mazing wrapper for ClicEtMiam.",
+  "author": "LiterateInk <contact@literate.ink> (https://literate.ink)",
+  "contributors": [
+    "Skythrew <mael.guerin@murena.io>"
+  ],
+  "license": "GPL-3.0-or-later",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -17,45 +20,39 @@
       "default": "./dist/index.js"
     }
   },
-  "scripts": {
-    "build": "tsup",
-    "release": "release-it",
-    "lint": "tsc && eslint .",
-    "test": "bun test"
+  "dependencies": {
+    "@literate.ink/utilities": "1.0.0-10641118381.1",
+    "node-html-parser": "^7.0.1"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@types/bun": "^1.1.8",
+    "@typescript-eslint/parser": "^8.29.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.24.0",
+    "eslint-plugin-perfectionist": "^4.11.0",
+    "terser": "^5.31.6",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
   },
   "files": [
     "dist"
   ],
   "keywords": [
-    "clickandmeow",
+    "clicetmiam",
     "wrapper",
-    "api"
+    "scrapper"
   ],
-  "author": "Skythrew <mael.guerin@murena.io>",
-  "homepage": "https://github.com/Skythrew/clicetmiam-api",
+  "scripts": {
+    "build": "tsup"
+  },
   "bugs": {
-    "url": "https://github.com/Skythrew/clicetmiam-api/issues"
+    "url": "https://github.com/LiterateInk/ClickAndMeow.JS/issues"
   },
-  "license": "GPL-3.0-or-later",
-  "engines": {
-    "node": ">=18"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiterateInk/ClickAndMeow.JS.git"
   },
-  "devDependencies": {
-    "@inquirer/prompts": "^4.3.3",
-    "@stylistic/eslint-plugin": "^2.7.2",
-    "@types/bun": "^1.1.8",
-    "@types/node": "^22.5.4",
-    "@typescript-eslint/parser": "^8.4.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^9.10.0",
-    "release-it": "^18.1.1",
-    "release-it-pnpm": "^4.6.4",
-    "terser": "^5.31.6",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
-  },
-  "dependencies": {
-    "@literate.ink/utilities": "1.0.0-10641118381.1",
-    "node-html-parser": "^7.0.1"
-  }
+  "homepage": "https://github.com/LiterateInk/ClickAndMeow.JS",
+  "sideEffects": false
 }
