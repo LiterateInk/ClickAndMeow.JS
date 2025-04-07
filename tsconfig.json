@@ -14,6 +14,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "examples", "eslint.config.mjs"],
+  "include": ["src", "examples", "eslint.config.ts", "tsup.config.ts", "tests/html.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
